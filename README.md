@@ -19,18 +19,18 @@
 ## Introduction
 Before getting into the technical description, here is what Signal K has to offer for its various user groups:
 
-For **boaters**, signalk-server is an application that runs in the background and makes functionality and data available to other Apps and devices.
+**For boaters**, signalk-server is an application that runs in the background and makes functionality and data available to other Apps and devices.
 One of its most popular features is to make data from the navcom system, such as position, coursee, speed as well as AIS targets, available for popular apps like Navionics, iSailor, iNavX, Aqua Map and WilhelmSK via the WiFi network.
 
 Also it can take care of the anchor watch, be a weather station and an automatic logbook. And as a final example, it can turn your boat into a MarineTraffic station which may give free access to [their professional plans](https://help.marinetraffic.com/hc/en-us/articles/360017183497-As-a-station-owner-am-I-entitled-to-a-free-Subscription-).
 
 To learn more of the features of signalk-server and the available plugins, apps and webapps, continue reading HERE!!!???.
 
-For **DIY boaters**, signalk-server is all of the above and typically runs on a Cerbo GX, RaspberryPi or similar hardware. signalk-server then takes a core (background-) role.
+**For DIY boaters**, signalk-server is all of the above and typically runs on a Cerbo GX, RaspberryPi or similar hardware. signalk-server then takes a core (background-) role.
 
-For **marine companies**, for example those making chartplotters, remote monitoring and tracking systems as well as other hardware, signalk-server is an opportunity to get all that protocol conversion and more as an open-source, Apache-licensed nodejs implementation. Which is proven, mature, and used by thousands of boaters world wide.
+**For Marine companies**, for example those making chartplotters, remote monitoring and tracking systems as well as other hardware, signalk-server is an opportunity to get all that protocol conversion and more as an open-source, Apache-licensed nodejs implementation. Which is proven, mature, and used by thousands of boaters world wide.
 
-For **(sailing) software developers**, signalk-server a free and open platform developed by boaters for other boaters who want to build and share things with other boaters.
+**For (sailing) software developers**, signalk-server a free and open platform developed by boaters for other boaters who want to build and share things with other boaters.
 signalk-server features a [plugin framework](https://github.com/SignalK/signalk-server/blob/master/SERVERPLUGINS.md),
 [Webapp framework](https://github.com/SignalK/signalk-server/blob/master/WEBAPPS.md)
 as well as a [REST API](https://signalk.org/specification/1.7.0/doc/rest_api.html)
