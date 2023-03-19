@@ -55,8 +55,6 @@ New to Signal K Slack? Then [click here for an invite](https://join.slack.com/t/
 
 For the typical boater, not being a software developer nor electrical engineer, the best option is to get a (commercially available) product that already has Signal K Server inside. These are the currently available devices:
 
-* [iKommunicate](https://ikommunicate.com/) by Digital Yacht
-* [vyacht](http://vyacht.net/) open source boat router by vyacht AB
 * [Cerbo GX](https://www.victronenergy.com/panel-systems-remote-monitoring/cerbo-gx) and other GX Devices by Victron Energy  ([see Venus OS Large manual](https://www.victronenergy.com/live/venus-os:large))
 
 For a more technical DIY oriented boater, a RaspberryPi based setup offers a very cost-attractive alternative.
