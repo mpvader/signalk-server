@@ -8,7 +8,7 @@
 
 ## Contents
 * [Introduction](#introduction)
-* [Signal K Server vs the Signalk K data standard](#signal-k-server-vs-the-signal-k-data-standard)
+* [Technical introduction](#technical-introduction)
 * [Community & support](#community--support)
 * [How to get Signal K Server](#how-to-get-signalk-server)
 * [Installing from source](#installing-from-source)
@@ -17,7 +17,7 @@
 * [License](#license)
 
 ## Introduction
-Signal K Server is aimed for yachts, and multiplexes data from and to NMEA0183, NMEA 2000, Signal K and other marine protocols, as well as WiFi, LAN and internet. It is implemented in nodejs as a single process and features a webbased admin UI for configuration.
+Before getting into the technical description, here is what Signal K has to offer for its various user groups:
 
 For **boaters**, signalk-server is an application that runs in the background and makes functionality and data available to other Apps and devices.
 One of its most popular features is to make data from the navcom system, such as position, coursee, speed as well as AIS targets, available for popular apps like Navionics, iSailor, iNavX, Aqua Map and WilhelmSK via the WiFi network.
@@ -26,7 +26,7 @@ Also it can take care of the anchor watch, be a weather station and an automatic
 
 To learn more of the features of signalk-server and the available plugins, apps and webapps, continue reading HERE!!!???.
 
-For **DIY boaters**, signalk-server is all of the above and typically runs on a RaspberryPi or similar hardware. signalk-server then takes a core (background-) role.
+For **DIY boaters**, signalk-server is all of the above and typically runs on a Cerbo GX, RaspberryPi or similar hardware. signalk-server then takes a core (background-) role.
 
 For **marine companies**, for example those making chartplotters, remote monitoring and tracking systems as well as other hardware, signalk-server is an opportunity to get all that protocol conversion and more as an open-source, Apache-licensed nodejs implementation. Which is proven, mature, and used by thousands of boaters world wide.
 
@@ -38,13 +38,13 @@ and [Streaming API](https://signalk.org/specification/1.7.0/doc/streaming_api.ht
 signalk-server implements all the typically needed data conversions to- and from NMEA2000, NMEA0183 and many more protocols.
 It  makes the data available in JSON format according to the [Signal K standard specification](https://signalk.org/specification/latest/). All that allows developers to bypass all the hurdles typically encountered when wanting to implement something small for a boat.
 
-## Signal K Server vs. the Signal K data standard
+## Technical introduction
 
-When referring to the word Signal K, it can mean either one of these, or both. 
+There is more Signal K than just Signal K Server. Signal K encompasses three major components:
 
-1. Signal K server, the software in this github repository and described in this readme.
-
-2. The Signal K data standard, an open marine data standard. It is a modern data format for marine use, suitable for WiFi, cellphones, tables and the internet. Signal K server is build  data standard specification. is Built on standard web technologies including JSON, WebSockets and HTTP, Signal K provides a method for sharing information in a way that is friendly to WiFi, cellphones, tablets and the Internet. More information on [https://signalk.org](https://signalk.org/index.html).
+1. **The Signal K Data Standard**: an open marine data standard. It is a modern data format for marine use, suitable for WiFi, cellphones, tables and the internet. Signal K server is build  data standard specification. is Built on standard web technologies including JSON, WebSockets and HTTP, Signal K provides a method for sharing information in a way that is friendly to WiFi, cellphones, tablets and the Internet. More information on [https://signalk.org](https://signalk.org/index.html).is part of the Signal K platform
+2. **Signal K Server**: Signal K Server: Software in this GitHub repository and described in this document. Signal K server is a full stack application developed in Node.js. Its back-end multiplexes data from and to NMEA0183, NMEA 2000, Signal K and other marine protocols, as well as WiFi, LAN and Internet, and provides APIs and websockets for access and control. Its front-end provides an extensible web-based application allowing easy configuration and management of server functions and capabilities.
+3. **Signal K Plugins and Webapps**: Built using the extensibility of Signal K Server with a plugin framework, allows developers to develop applications that easily integrate with Signal K server, extend its capabilities and publish them through npm. All published plugins become available in all existing Signal K server installations, which provides an easy distribution mechanism.
 
 ## Community & support
 
@@ -53,21 +53,26 @@ New to Signal K Slack? Then [click here for an invite](https://join.slack.com/t/
 
 ## How to get signalk-server?
 
-Commercially available hardware that embeds Signal K Server:
+For the typical boater, not being a software developer nor electrical engineer, the best option is to get a (commercially available) product that already has Signal K Server inside. These are the currently available devices:
+
 * [iKommunicate](https://ikommunicate.com/) by Digital Yacht
 * [vyacht](http://vyacht.net/) open source boat router by vyacht AB
 * [Cerbo GX](https://www.victronenergy.com/panel-systems-remote-monitoring/cerbo-gx) and other GX Devices by Victron Energy  ([see Venus OS Large manual](https://www.victronenergy.com/live/venus-os:large))
 
-Prebuilt images for RaspberryPis and similar hardware:
+For a more technical DIY oriented boater, a RaspberryPi based setup offers a very cost-attractive alternative.
+These prebuilt images for RaspberryPis take away most of the complexity involved from the software side:
+
 * [BBN Marine OS](https://github.com/bareboat-necessities/lysmarine_gen#what-is-lysmarine-bbn-edition)
 * [OpenPlotter](https://openmarine.net/openplotter) by OpenMarine
 * [Venus OS for RaspberryPis](https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image) by Victron Energy
 * [Signal K docker images](https://github.com/SignalK/signalk-server/tree/master/docker)
 
-Provisioning scripts:
+Next level up is to use provisioning scripts:
+
 * [MarinePi Provisioning](https://github.com/tkurki/marinepi-provisioning) - Ansible scripts to setup RaspberryPi for boat use
 
-Installation:
+Another level up, this document explains how to install Signal K Server, as well as its dependencies, on a RaspberryPi that is already running Raspberry Pi OS:
+
 * [Installation on a RaspberryPi](https://github.com/SignalK/signalk-server-node/blob/master/raspberry_pi_installation.md)
 
 Or continue to read on how to install it from source
