@@ -51,7 +51,7 @@ There is more Signal K than just Signal K Server. Signal K encompasses three maj
 See [Github Discussions](https://github.com/SignalK/signalk/discussions/) and [Slack (chat)](https://signalk-dev.slack.com/).
 New to Signal K Slack? Then [click here for an invite](https://join.slack.com/t/signalk-dev/shared_invite/zt-1leccop43-KrU7G6yBq9g91KXjZtNg1g).
 
-## How to get signalk-server?
+## How to get Signal K Server?
 
 For the typical boater, not being a software developer nor electrical engineer, the best option is to get a (commercially available) product that already has Signal K Server inside. These are the currently available devices:
 
