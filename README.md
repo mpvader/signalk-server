@@ -6,27 +6,78 @@
 
 [![Open Collective backers and sponsors](https://img.shields.io/opencollective/all/signalk)](https://opencollective.com/signalk)
 
+## Contents
+* [Introduction](#introduction)
+* [Signal K Server vs the Signalk K data standard](#signal-k-server-vs-the-signal-k-data-standard)
+* [Community & support](#community--support)
+* [How to get Signal K Server](#how-to-get-signalk-server)
+* [Installing from source](#installing-from-source)
+* [Configuration and use](#configuration-and-use)
+* [Further reading](#further-reading)
+* [License](#license)
 
+## Introduction
+Signal K Server is aimed for yachts, and multiplexes data from and to NMEA0183, NMEA 2000, Signal K and other marine protocols, as well as WiFi, LAN and internet. It is implemented in nodejs as a single process and features a webbased admin UI for configuration.
 
-An implementation of a [Signal K](http://signalk.org) server in Node.js. Intended to run on embedded devices (e.g. Raspberry Pi, Beaglebone or UDOO).
+For **boaters**, signalk-server is an application that runs in the background and makes functionality and data available to other Apps and devices.
+One of its most popular features is to make data from the navcom system, such as position, course and speed as well as AIS targets available for popular apps like Navionics, iSailor, iNavX, Aqua Map and WilhelmSK via the WiFi network.
 
-The server multiplexes data from NMEA0183, NMEA 2000, Signal K and sensor inputs (eg. I2C connected sensors) and provides the data in Signal K format over HTTP, WebSocket and TCP. It also functions as a NMEA0183 server over TCP.
+Also it can take care of the anchor watch, be a weather station and an automatic logbook. And as a final example, it can turn your boat into a MarineTraffic station which may give free access to [their professional plans](https://help.marinetraffic.com/hc/en-us/articles/360017183497-As-a-station-owner-am-I-entitled-to-a-free-Subscription-).
 
-The server's capabilities can be expanded with the help of plugins that provide additional features such as
-* conversion to NMEA2000
-* conversion to NMEA0183
-* read and write interfacing with cloud services such as MarineTraffic
-* logging to database such as InfluxDb
+To learn more of the features of signalk-server and the available plugins, apps and webapps, continue reading HERE!!!???.
 
+For **DIY oriented boaters**, signalk-server is all of the above and typically runs on a RaspberryPi or similar hardware. signalk-server then takes a core (background-) role.
 
-# Installation
+For **marine companies**, for example those making chartplotters, remote monitoring and tracking systems as well as other hardware, signalk-server is an opportunity to get all that protocol conversion and more as an open-source, Apache-licensed nodejs implementation. Which is proven, mature, and used by thousands of boaters world wide.
 
-Detailed instructions for [installation on Raspberry Pi](https://github.com/SignalK/signalk-server-node/blob/master/raspberry_pi_installation.md)
+For **(sailing) software developers**, signalk-server a free and open platform developed by boaters for other boaters who want to build and share things with other boaters.
+signalk-server features a [plugin framework](https://github.com/SignalK/signalk-server/blob/master/SERVERPLUGINS.md),
+[Webapp framework](https://github.com/SignalK/signalk-server/blob/master/WEBAPPS.md)
+as well as a [REST API](https://signalk.org/specification/1.7.0/doc/rest_api.html)
+and [Streaming API](https://signalk.org/specification/1.7.0/doc/streaming_api.html).
+signalk-server implements all the typically needed data conversions to- and from NMEA2000, NMEA0183 and many more protocols.
+It  makes the data available in JSON format according to the [Signal K standard specification](https://signalk.org/specification/latest/). All that allows developers to bypass all the hurdles typically encountered when wanting to implement something small for a boat.
 
-Prerequisites
-* Node.js version 16 with latest npm installed (the server works for the time being on Node version >=10, but we are moving to the latest LTS version that is v16 in 9/2021)
+## Signal K Server vs. the Signal K data standard
 
-## Use: Install from npm
+When referring to the word Signal K, it can mean either one of these, or both. 
+
+1. Signal K server, the software in this github repository and described in this readme.
+
+2. The Signal K data standard, an open marine data standard. It is a modern data format for marine use, suitable for WiFi, cellphones, tables and the internet. Signal K server is build  data standard specification. is Built on standard web technologies including JSON, WebSockets and HTTP, Signal K provides a method for sharing information in a way that is friendly to WiFi, cellphones, tablets and the Internet. More information on [https://signalk.org](https://signalk.org/index.html).
+
+## Community & support
+
+See [Github Discussions](https://github.com/SignalK/signalk/discussions/) and [Slack (chat)](https://signalk-dev.slack.com/).
+New to Signal K Slack? Then [click here for an invite](https://join.slack.com/t/signalk-dev/shared_invite/zt-1leccop43-KrU7G6yBq9g91KXjZtNg1g)
+
+## How to get signalk-server?
+
+Commercially available hardware that embeds Signal K Server:
+* [iKommunicate](https://ikommunicate.com/) by Digital Yacht
+* [vyacht](http://vyacht.net/) open source boat router by vyacht AB
+* [Cerbo GX](https://www.victronenergy.com/panel-systems-remote-monitoring/cerbo-gx) and other GX Devices by Victron Energy  ([see Venus OS Large manual](https://www.victronenergy.com/live/venus-os:large))
+
+Prebuilt images for RaspberryPis and similar hardware:
+* [BBN Marine OS](https://github.com/bareboat-necessities/lysmarine_gen#what-is-lysmarine-bbn-edition)
+* [OpenPlotter](https://openmarine.net/openplotter) by OpenMarine
+* [Venus OS for RaspberryPis](https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image) by Victron Energy
+* [Signal K docker images](https://github.com/SignalK/signalk-server/tree/master/docker)
+
+Provisioning scripts:
+* [MarinePi Provisioning](https://github.com/tkurki/marinepi-provisioning) - Ansible scripts to setup RaspberryPi for boat use
+
+Installation:
+* [Installation on a RaspberryPi](https://github.com/SignalK/signalk-server-node/blob/master/raspberry_pi_installation.md)
+
+Or continue to read on how to install it from source
+
+## Installing from source
+
+Prerequisites:
+* Node.js version 16 with latest npm installed (signalk-server works for the time being on Node version >=10, but we are moving to the latest LTS version that is v16 in 9/2021)
+
+### Install from npm
 
     $ sudo npm install -g signalk-server
 
@@ -34,11 +85,11 @@ Now you can start the server with sample data:
 * NMEA0183 sample data: `signalk-server --sample-nmea0183-data`
 * NMEA2000 sample data: `signalk-server --sample-n2k-data`
 
-To generate your own vessel settings file and configure your Pi to start the server automatically run
+To generate your own vessel settings file and configure the server to start automatically, run:
 
     $ sudo signalk-server-setup
 
-## Develop: Install from git
+### Install from git
 
 ```
 git clone https://github.com/SignalK/signalk-server.git
@@ -53,42 +104,20 @@ Start the server with sample data:
 
 This will start the server with a sample configuration file and the server will start playing back data from a sample file under `samples/`. The data is available immediately via the REST interface at https://localhost:3000/signalk/v1/api/.
 
-A simple way to connect to the WebSocket interface from the command line is to install wscat2 and use that:
+This small demo shows how to connect the Signal K Server WebSocket interface from the command line:
 ```
 npm install -g wscat2
 wscat 'ws://localhost:3000/signalk/v1/stream?subscribe=all'
 ```
 
-## Provision: Ansible on a Raspberry Pi
-
-[Marinepi-provisioning](https://github.com/tkurki/marinepi-provisioning) has useful roles and examples for provisioning Signal K and auxiliary services on a headless Raspberry Pi.
-
-
-## Docker
-
-You can start a local server on port 3000  with demo data with
-
-```
-docker run --init -it --rm --name signalk-server --publish 3000:3000 --entrypoint /home/node/signalk/bin/signalk-server signalk/signalk-server --sample-nmea0183-data
-```
-
-For real use you need to persist /home/node/.signalk where the server's configuration is stored, with for example
-
-```
-docker run -d --init  --name signalk-server -p 3000:3000 -v $(pwd):/home/node/.signalk signalk/signalk-server
-```
-This will run the server as background process and current directory as the settings directory. You will be prompted to create admin credentials the first time you you access the configuration admin web UI.
-
-More docker information can found from [docker](docker/) -folder
-
-
+## Configuration and use
 Now what?
 ---------
 
 Once you have the data streams in place you probably want to use the data or at least see it in a nice format. Some sample plugins and apps are installed during the installation process.
 - Apps or Webapps are mainly web pages for accessing the Signal K output such as dashboards, configurable gauges or web maps. See [Webapps doc](https://github.com/SignalK/signalk-server-node/blob/master/WEBAPPS.md) for more information.
 - If you have internet connectivity for your server App Store in the admin user interfaces shows all the Signal K Plugins and Apps that have been published via npm with the right keywords. It also shows their current status on your server and allows you to install and update these.
-- Plugins are web forms to tailor your server to your needs, change parameters or get information from various sources. See [Server Plugins](SERVERPLUGINS.md)
+- Plugins add extra features to tailor your server to your needs, change parameters or get information from various sources. See [Server Plugins](SERVERPLUGINS.md)
 
 Configuration
 =============
