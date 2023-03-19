@@ -55,6 +55,7 @@ New to Signal K Slack? Then [click here for an invite](https://join.slack.com/t/
 
 For the typical boater, not being a software developer nor electrical engineer, the best option is to get a (commercially available) product that already has Signal K Server inside. These are the currently available devices:
 
+* AIRMAR SOMETHIGN (TBD); WHICH IS SIGNALK-SERVER INSIDE
 * [Cerbo GX](https://www.victronenergy.com/panel-systems-remote-monitoring/cerbo-gx) and other GX Devices by Victron Energy  ([see Venus OS Large manual](https://www.victronenergy.com/live/venus-os:large))
 
 For a more technical DIY oriented boater, a RaspberryPi based setup offers a very cost-attractive alternative.
@@ -73,14 +74,14 @@ Another level up, this document explains how to install Signal K Server, as well
 
 * [Installation on a RaspberryPi](https://github.com/SignalK/signalk-server-node/blob/master/raspberry_pi_installation.md)
 
-Or continue to read on how to install it from source
+HERE NEEDS TO BE A NICE BRIDGE TO NEXT PART; WHICH IS ABOUT INSTALLING FROM NPM, THEN CONFIGURATION, THEREAFTER MORE DEVELOPER ORIENTED STUFF ABOUT GITHUB, AND LINKING TO THE VARIOUS OTHER README'S ABOUT PLUGINS, WEBAPPS, RESOURCE API ETC.
 
 ## Installing from source
 
+### Install from npm
+
 Prerequisites:
 * Node.js version 16 with latest npm installed (signalk-server works for the time being on Node version >=10, but we are moving to the latest LTS version that is v16 in 9/2021)
-
-### Install from npm
 
     $ sudo npm install -g signalk-server
 
