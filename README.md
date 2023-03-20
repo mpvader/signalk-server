@@ -36,9 +36,9 @@ There are many boaters who happen to be highly skilled software developers and e
 
 Signal K server takes care of all the complicated parts of protocol decode, and conversions to and from NMEA2000, NMEA0183 and many more protocols. It makes the data available in JSON format according to the [Signal K standard specification](https://signalk.org/specification/latest/). This allows developers to bypass all the hurdles typically encountered when wanting to implement something for a boat. [Getting started](https://github.com/SignalK/signalk-server/blob/master/SERVERPLUGINS.md) is surprisingly easy.
 
-## Technical introduction
+## Signal K Platform
 
-Signal K Platform is more than just the Signal K Server. Signal K encompasses three major components:
+Signal K is more than just the Signal K Server, it is a comprehensive platform that encompasses three major components:
 
 1. **The Signal K Data Standard**: an open marine data standard. It is a modern data format for marine use, suitable for WiFi, cellphones, tables and the internet. Signal K server is build  data standard specification. is Built on standard web technologies including JSON, WebSockets and HTTP, Signal K provides a method for sharing information in a way that is friendly to WiFi, cellphones, tablets and the Internet. More information on [https://signalk.org](https://signalk.org/index.html).is part of the Signal K platform
 2. **Signal K Server**: Software in this GitHub repository and described in this document. Signal K server is a full stack application developed in Node.js. Its back-end multiplexes data from and to NMEA0183, NMEA 2000, Signal K and other marine protocols, as well as WiFi, LAN and Internet, and provides APIs and websockets for access and control. Its front-end provides an extensible web-based application allowing easy configuration and management of server functions and capabilities.
