@@ -8,7 +8,7 @@
 
 ## Contents
 * [Introduction](#introduction)
-* [Technical introduction](#technical-introduction)
+* [Technical introduction](#signal-k-platform)
 * [Community & support](#community--support)
 * [How to get Signal K Server](#how-to-get-signalk-server)
 * [Installing from source](#installing-from-source)
