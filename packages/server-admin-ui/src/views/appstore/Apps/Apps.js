@@ -18,7 +18,7 @@ const viewParams = {
   apps: {
     listName: 'available',
     title: 'Available Apps',
-    defaultCategory: 'New/Updated',
+    defaultCategory: 'All',
   },
   installed: {
     listName: 'installed',
