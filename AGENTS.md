@@ -44,6 +44,10 @@ Do not add error handling, fallbacks, or validation for scenarios that cannot ha
 - Unit tests for business logic; integration tests for boundaries
 - Aim for meaningful coverage, not arbitrary percentages
 
+## Review Rules
+
+`REVIEW.md` lists what a change needs before a maintainer reviews it, each rule with an example from a real review. Check your change against it before asking for review. The `signalk-server-review` skill (`.claude/skills/signalk-server-review/SKILL.md`) does this step by step.
+
 ## Performance
 
 Signal K Server runs on Raspberry Pi 3-5 hardware, often on battery power. CPU cycles cost watts. Treat the delta ingestion and fanout path as allocation-sensitive.
