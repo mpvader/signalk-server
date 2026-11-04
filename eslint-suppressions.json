@@ -1,0 +1,102 @@
+{
+  "src/api/autopilot/index.ts": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/api/ble/index.ts": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/api/course/index.ts": {
+    "no-console": {
+      "count": 4
+    }
+  },
+  "src/api/weather/index.ts": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/config/config.ts": {
+    "no-console": {
+      "count": 6
+    }
+  },
+  "src/config/priorities-file.ts": {
+    "no-console": {
+      "count": 2
+    }
+  },
+  "src/discovery.js": {
+    "no-console": {
+      "count": 2
+    }
+  },
+  "src/index.ts": {
+    "no-console": {
+      "count": 6
+    }
+  },
+  "src/interfaces/applicationData.js": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/interfaces/appstore.js": {
+    "no-console": {
+      "count": 6
+    }
+  },
+  "src/interfaces/plugins.ts": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/interfaces/tcp.ts": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/interfaces/ws.ts": {
+    "no-console": {
+      "count": 3
+    }
+  },
+  "src/logging.js": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/oidc/oidc-admin.ts": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/security.ts": {
+    "no-console": {
+      "count": 1
+    }
+  },
+  "src/serverroutes.ts": {
+    "no-console": {
+      "count": 13
+    }
+  },
+  "src/serverstate/store.ts": {
+    "no-console": {
+      "count": 3
+    }
+  },
+  "src/sourceref-migration.ts": {
+    "no-console": {
+      "count": 2
+    }
+  },
+  "src/tokensecurity.ts": {
+    "no-console": {
+      "count": 1
+    }
+  }
+}

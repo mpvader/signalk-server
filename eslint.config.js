@@ -45,6 +45,15 @@ module.exports = defineConfig([
     }
   },
 
+  // Server code logs through debug, or console.error / console.warn
+  {
+    files: ['src/**/*.{ts,js}'],
+    ignores: ['src/**/*.test.{ts,js}'],
+    rules: {
+      'no-console': ['error', { allow: ['error', 'warn'] }]
+    }
+  },
+
   // Test-only options
   {
     files: [
