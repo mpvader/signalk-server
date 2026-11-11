@@ -101,6 +101,10 @@ To get the path for the sample file, data type NMEA 0183, use below command.
 sudo find / -name "plaka.log"
 ```
 
+### Switching a connection on and off from a file
+
+A connection can follow a file: add `"enableFile": "/run/example/can0"` next to `"enabled"` in its entry in `settings.json` (see [Adding the connection to settings.json](./execute.md#adding-the-connection-to-settingsjson)). The connection runs only while the file's first line is `on`. Otherwise, also when the file is missing, the Dashboard shows the file's second line, or `Off`, as its status. The server checks the file every second and restarts the connection on every change. Venus OS uses this to follow the CAN-bus profile of each port.
+
 ## Exploring and Managing Data
 
 The _Data_ menu provides tools for viewing, inspecting, and managing your Signal K data:

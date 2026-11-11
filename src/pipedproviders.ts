@@ -15,6 +15,7 @@
  */
 
 import { PropertyValues, PropertyValuesCallback } from '@signalk/server-api'
+import fs from 'fs'
 import _ from 'lodash'
 import { Duplex, Writable } from 'stream'
 import { SignalKMessageHub, WithConfig } from './app'
@@ -36,11 +37,14 @@ interface PipeElementConfig {
 }
 interface PipedProviderConfig {
   enabled: boolean
+  enableFile?: string
   id: string
   pipeElements: PipeElementConfig[]
 }
 
 class PipedProvider {}
+
+const ENABLE_FILE_POLL_INTERVAL_MS = 1000
 
 export function pipedProviders(
   app: SignalKMessageHub &
@@ -48,6 +52,7 @@ export function pipedProviders(
     WithWrappedEmitter & {
       propertyValues: PropertyValues
       setProviderError: (providerId: string, msg: string) => void
+      setProviderStatus: (providerId: string, msg: string) => void
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       providers: any[]
     }
@@ -141,13 +146,46 @@ export function pipedProviders(
     })
   }
 
+  // enableFile holds `on`, or `off` and the reason on the next line. When off,
+  // this also shows the reason as the connection's status.
+  function mayStart(config: PipedProviderConfig) {
+    const enabled = typeof config.enabled === 'undefined' || config.enabled
+    if (!enabled) {
+      return false
+    }
+    if (!config.enableFile) {
+      return true
+    }
+    let content = ''
+    try {
+      content = fs.readFileSync(config.enableFile, 'utf8')
+    } catch {
+      // missing: off
+    }
+    const [state, reason] = content.split('\n')
+    const on = state.trim() === 'on'
+    app.setProviderStatus(config.id, on ? '' : reason?.trim() || 'Off')
+    return on
+  }
+
   function startProviders() {
     if (app.config.settings.pipedProviders) {
       const piped = (
         app.config.settings.pipedProviders as PipedProviderConfig[]
       ).reduce<PipedProvider[]>((result, config) => {
+        if (config.enableFile) {
+          // fs.watchFile, not fs.watch: a stat poll also sees the file
+          // appear with its directory. A rewrite with the same content
+          // still restarts: after the interface went down and up, the old
+          // socket stays silent.
+          fs.watchFile(
+            config.enableFile,
+            { interval: ENABLE_FILE_POLL_INTERVAL_MS },
+            () => restartProvider(config.id)
+          )
+        }
         try {
-          if (typeof config.enabled === 'undefined' || config.enabled) {
+          if (mayStart(config)) {
             result.push(createPipedProvider(config))
           }
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -183,10 +221,7 @@ export function pipedProviders(
     const providerConfig = (
       app.config.settings.pipedProviders as PipedProviderConfig[]
     )?.find((p) => p.id === id)
-    if (
-      providerConfig &&
-      (typeof providerConfig.enabled === 'undefined' || providerConfig.enabled)
-    ) {
+    if (providerConfig && mayStart(providerConfig)) {
       try {
         app.providers.push(createPipedProvider(providerConfig))
       } catch (e: unknown) {
