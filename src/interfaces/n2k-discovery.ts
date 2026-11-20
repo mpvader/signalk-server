@@ -1298,17 +1298,17 @@ module.exports = (app: N2kDiscoveryApp) => {
           // Re-request Address Claim so sources data updates
           schedulePendingRequest(() => sendISORequest(app, dst, 60928), 1000)
         } else if (field === 'deviceInstanceLower') {
-          // PGN 126208 Command targeting PGN 60928 field 3 only (data instance)
+          // PGN 126208 Command targeting PGN 60928 field 3 only
           const lower = Number(value)
           if (isNaN(lower) || lower < 0 || lower > 7) {
             res.status(400).json({
               state: 'FAILED',
               statusCode: 400,
-              message: 'deviceInstanceLower (Data Instance) must be 0-7'
+              message: 'deviceInstanceLower must be 0-7'
             })
             return
           }
-          debug('Sending data instance change to dst %d: %d', dst, lower)
+          debug('Sending Device Instance Lower to dst %d: %d', dst, lower)
           app.emit(
             'nmea2000JsonOut',
             new PGN_126208_NmeaCommandGroupFunction(

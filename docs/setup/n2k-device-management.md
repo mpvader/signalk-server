@@ -26,12 +26,13 @@ You can give any device a custom alias via the pencil icon next to its label —
 
 NMEA 2000 uses several different instance numbers to distinguish between sensors of the same kind. Knowing which one to change matters: editing the wrong one usually has no effect, and on Victron equipment editing the wrong one can break parallel-charging coordination.
 
-### Device Instance (in PGN 60928, ISO Address Claim)
+### Device Instance and System Instance (in PGN 60928, ISO Address Claim)
 
-The **Device Instance** identifies a physical device on the bus. It comprises two parts that can be edited together or independently:
+The **Device Instance** is one number, 0-253, that installers can set to tell devices of the same kind apart. The address claim stores it in two fields, "Device Instance Lower" (3 bits, ISO ECU Instance) and "Device Instance Upper" (5 bits, ISO Function Instance): Device Instance = Upper × 8 + Lower. Configuration tools show and edit it as that one number.
 
-- **Data Instance** ("Device Instance Lower") — used by some classes of device to distinguish sensor readings from the same device.
-- **System Instance** ("Device Instance Upper") — groups devices into subsystems.
+The **System Instance** (4 bits, ISO Device Class Instance) is a separate field. It marks devices on another network segment, on a redundant or parallel network, or behind a bridge or gateway; on a single network it is normally 0.
+
+Neither is a data instance. Data instances, such as the Battery and DC Instance below, are fields inside the data PGNs.
 
 ### Battery Instance (in PGN 127508, Battery Status)
 
